@@ -16,12 +16,12 @@ public class JpaMain {
         tx.begin();
 
         try {
-//            Member findMember = em.find(Member.class, 1L);
-            List<Member> result = em.createQuery("select m from Member as m", Member.class)
-                    .getResultList();
-            for (Member member : result) {
-                System.out.println("member = " + member.getName());
-            }
+
+            //영속
+            Member findMember1 = em.find(Member.class, 101L);
+            Member findMember2 = em.find(Member.class, 101L); // 1차 캐시에서 가져왔기 때문에 findMember1와 같은 객체
+
+            System.out.println(findMember1 == findMember2); //true
 
             tx.commit();
         } catch (Exception e) {
