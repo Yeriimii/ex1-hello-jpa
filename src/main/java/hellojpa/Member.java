@@ -1,7 +1,6 @@
 package hellojpa;
 
 import javax.persistence.*;
-import java.util.Date;
 
 @Entity
 public class Member {
@@ -35,7 +34,9 @@ public class Member {
         return team;
     }
 
-    public void setTeam(Team team) {
+    // 연관관계 편의 메서드 (양방향 관계에서 set 실수 방지)
+    public void changeTeam(Team team) {
         this.team = team;
+        team.getMembers().add(this);
     }
 }
