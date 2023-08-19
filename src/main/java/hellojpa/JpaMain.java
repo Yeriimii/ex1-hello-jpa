@@ -19,11 +19,13 @@ public class JpaMain {
 
             //영속
             Member member = em.find(Member.class, 150L);
-            member.setName("ZZZZZ"); // Java collection 다루듯 변경 가능 <- Dirty checking
+            member.setName("AAAAA");
 
-//            em.persist(member);
+            em.detach(member); // 영속 -> 준영속
 
-            tx.commit();
+            System.out.println("==========");
+
+            tx.commit(); // 준영속 상태인 엔티티는 아무런 영향이 없다
         } catch (Exception e) {
             tx.rollback();
         } finally {
