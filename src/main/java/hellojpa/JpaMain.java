@@ -17,14 +17,6 @@ public class JpaMain {
 
         try {
 
-            //영속
-            Member member = em.find(Member.class, 150L);
-            member.setName("AAAAA");
-
-            em.detach(member); // 영속 -> 준영속
-
-            System.out.println("==========");
-
             tx.commit(); // 준영속 상태인 엔티티는 아무런 영향이 없다
         } catch (Exception e) {
             tx.rollback();

@@ -16,7 +16,7 @@
             <property name="hibernate.show_sql" value="true"/>
             <property name="hibernate.format_sql" value="true"/>
             <property name="hibernate.use_sql_comments" value="true"/>
-            <!--<property name="hibernate.hbm2ddl.auto" value="create" />-->
+            <property name="hibernate.hbm2ddl.auto" value="create" /> <!-- 기존 테이블 삭제 후 다시 생셩(drop + create) -->
         </properties>
     </persistence-unit>
 </persistence>
