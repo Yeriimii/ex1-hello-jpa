@@ -8,12 +8,12 @@ public class Member {
 
     @Id
     private long id;
-    @Column(name = "name")
+    @Column(name = "name", nullable = false, columnDefinition = "varchar(100) default 'EMPTY'")
     private String username;
     private Integer age;
-    @Enumerated(EnumType.STRING)
+    @Enumerated(EnumType.STRING) // EnumType 은 default 인 ORDINAL 을 사용하지말자
     private RoleType roleType;
-    @Temporal(TemporalType.TIMESTAMP)
+    @Temporal(TemporalType.TIMESTAMP) // DATE, TIME, TIMESTAMP 셋 중에 하나 선택 또는 Java 기본 타입 사용(LocalDate 등)
     private Date createdDate;
     @Temporal(TemporalType.TIMESTAMP)
     private Date lastModifiedDate;
