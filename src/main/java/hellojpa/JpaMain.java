@@ -18,10 +18,11 @@ public class JpaMain {
         try {
 
             //영속
-            Member findMember1 = em.find(Member.class, 101L);
-            Member findMember2 = em.find(Member.class, 101L); // 1차 캐시에서 가져왔기 때문에 findMember1와 같은 객체
+            Member member1 = new Member(150L, "A");
+            Member member2 = new Member(160L, "B");
 
-            System.out.println(findMember1 == findMember2); //true
+            em.persist(member1); // 쓰기 지연
+            em.persist(member2); // 쓰기 지연
 
             tx.commit();
         } catch (Exception e) {
