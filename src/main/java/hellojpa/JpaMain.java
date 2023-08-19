@@ -17,6 +17,14 @@ public class JpaMain {
 
         try {
 
+            Member member1 = new Member();
+            member1.setUsername("C");
+            Member member2 = new Member();
+            member2.setUsername("D");
+
+            em.persist(member1);
+            em.persist(member2);
+
             tx.commit(); // 준영속 상태인 엔티티는 아무런 영향이 없다
         } catch (Exception e) {
             tx.rollback();
