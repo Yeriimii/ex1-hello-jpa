@@ -3,8 +3,8 @@ package hellojpa;
 import javax.persistence.*;
 
 @Entity
-@Inheritance(strategy = InheritanceType.JOINED) // 조인 테이블 전략
-@DiscriminatorColumn // DTYPE 생성 : (기본값)엔티티 이름으로 생성 -> 없어도 어떻게든 돌아간다.
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE) // 싱글 테이블 전략 (기본값)
+@DiscriminatorColumn // DTYPE 생성(필수) : (기본값)엔티티 이름으로 생성 -> 싱글 테이블 전략에선 반드시 필요하다.
 public class Item {
 
     @Id @GeneratedValue
