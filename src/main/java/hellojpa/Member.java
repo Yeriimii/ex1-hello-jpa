@@ -5,11 +5,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-public class Member {
+public class Member extends BastEntity {
 
-    @Id @GeneratedValue
+    @Id
+    @GeneratedValue
     private Long id;
-    @Column(name= "USERNAME")
+    @Column(name = "USERNAME")
     private String username;
 
     @ManyToOne
