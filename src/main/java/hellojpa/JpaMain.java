@@ -16,25 +16,16 @@ public class JpaMain {
 
         try {
 
-            Team team = new Team();
-            team.setName("teamA");
-            em.persist(team);
+            Child child1 = new Child();
+            Child child2 = new Child();
 
-            Member member = new Member();
-            member.setUsername("member1");
-            member.setTeam(team);
-            em.persist(member);
+            Parent parent = new Parent();
+            parent.addChild(child1);
+            parent.addChild(child2);
 
-            em.flush();
-            em.clear();
-
-            Member m = em.find(Member.class, member.getId());
-
-            System.out.println("m.getTeam().getClass() = " + m.getTeam().getClass());
-
-            System.out.println("=========");
-            m.getTeam().getName(); // 초기화 (getTeam() 만으로는 초기화 X)
-            System.out.println("=========");
+            em.persist(parent);
+//            em.persist(child1); // cascade 옵션을 줬기 때문에 생략
+//            em.persist(child2); // cascade 옵션을 줬기 때문에 생략
 
             tx.commit();
         } catch (Exception e) {
