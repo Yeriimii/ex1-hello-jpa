@@ -12,7 +12,8 @@ public class Team {
     private Long id;
     private String name;
 
-    @OneToMany(mappedBy = "team") // 반대편에 연결되어 있는 멤버변수의 이름 -> 연관관계 주인(Owner)
+    @OneToMany
+    @JoinColumn(name = "TEAM_ID") // 일대다 단방향 연결
     private List<Member> members = new ArrayList<>();
 
     public Long getId() {
@@ -33,5 +34,9 @@ public class Team {
 
     public List<Member> getMembers() {
         return members;
+    }
+
+    public void setMembers(List<Member> members) {
+        this.members = members;
     }
 }
