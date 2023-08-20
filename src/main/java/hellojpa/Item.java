@@ -3,9 +3,9 @@ package hellojpa;
 import javax.persistence.*;
 
 @Entity
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE) // 싱글 테이블 전략 (기본값)
-@DiscriminatorColumn // DTYPE 생성(필수) : (기본값)엔티티 이름으로 생성 -> 싱글 테이블 전략에선 반드시 필요하다.
-public class Item {
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS) // 구현 클래스마다 테이블 전략
+// @DiscriminatorColumn // 구분할 필요가 없으니까 사용 안한다.
+public abstract class Item {
 
     @Id @GeneratedValue
     private Long id;
