@@ -11,7 +11,7 @@ public class Parent {
     private Long id;
     private String name;
 
-    @OneToMany(mappedBy = "parent", cascade = CascadeType.ALL) // 컬렉션 내부의 멤버들도 모두 persist (영속) 적용
+    @OneToMany(mappedBy = "parent", cascade = CascadeType.ALL, orphanRemoval = true) // 고아 객체 -> 자동 삭제
     private List<Child> childList = new ArrayList<>();
 
     public void addChild(Child child) { // 연관관계 편의 메서드
@@ -33,5 +33,13 @@ public class Parent {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public List<Child> getChildList() {
+        return childList;
+    }
+
+    public void setChildList(List<Child> childList) {
+        this.childList = childList;
     }
 }
