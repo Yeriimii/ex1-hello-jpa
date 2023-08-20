@@ -5,7 +5,7 @@ import javax.persistence.MappedSuperclass;
 import java.time.LocalDateTime;
 
 @MappedSuperclass // 속성만 가져다 쓸 수 있게 함
-public class BastEntity {
+public class BaseEntity {
 
     @Column(name = "INSERT_MEMBER")
     private String createdBy;
