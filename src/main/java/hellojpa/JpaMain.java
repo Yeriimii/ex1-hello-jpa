@@ -26,8 +26,8 @@ public class JpaMain {
             member.getFavoriteFoods().add("족발");
             member.getFavoriteFoods().add("피자");
 
-            member.getAddressesHistory().add(new Address("old1", "street", "1111"));
-            member.getAddressesHistory().add(new Address("old2", "street", "1111"));
+            member.getAddressesHistory().add(new AddressEntity("old1", "street", "1111"));
+            member.getAddressesHistory().add(new AddressEntity("old2", "street", "1111"));
 
             em.persist(member);
 
@@ -46,8 +46,8 @@ public class JpaMain {
             findMember.getFavoriteFoods().add("한식");
 
             // old1 주소 변경
-            findMember.getAddressesHistory().remove(new Address("old1", "street", "1111"));
-            findMember.getAddressesHistory().add(new Address("newCity1", "street", "1111"));
+            findMember.getAddressesHistory().remove(new AddressEntity("old1", "street", "1111"));
+            findMember.getAddressesHistory().add(new AddressEntity("newCity1", "street", "1111"));
 
             tx.commit();
         } catch (Exception e) {
