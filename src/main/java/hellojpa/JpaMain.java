@@ -16,12 +16,19 @@ public class JpaMain {
 
         try {
 
-            Member member = new Member();
-            member.setUsername("hello");
-            member.setHomeAddress(new Address("city", "street", "100"));
-            member.setWrokPeriod(new Period());
+            Address address = new Address("city", "street", "10000");
 
-            em.persist(member);
+            Member member1 = new Member();
+            member1.setUsername("hello");
+            member1.setHomeAddress(address);
+            em.persist(member1);
+
+            Address copyAddress = new Address("newCity", address.getStreet(), address.getZipcode()); // 새로 만들면됨
+
+            Member member2 = new Member();
+            member2.setUsername("hello");
+            member2.setHomeAddress(copyAddress); // 임베디드 값 타입을 복사해서 사용해야 한다.
+            em.persist(member2);
 
             tx.commit();
         } catch (Exception e) {
