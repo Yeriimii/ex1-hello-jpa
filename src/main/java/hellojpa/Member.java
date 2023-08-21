@@ -16,9 +16,12 @@ public class Member {
     @Column(name = "USERNAME")
     private String username;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "TEAM_ID")
-    private Team team;
+    /**
+     * 다대일 (Member에서 외래키를 관리) 일 때 작성
+     */
+//    @ManyToOne(fetch = FetchType.LAZY) // 일대다 (Team에서 외래키 관리) 일 때 작성 X
+//    @JoinColumn(name = "TEAM_ID")
+//    private Team team;
 
     @OneToOne
     @JoinColumn(name = "LOCKER_ID")

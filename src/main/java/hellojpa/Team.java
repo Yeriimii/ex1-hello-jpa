@@ -15,7 +15,7 @@ public class Team extends BaseEntity {
 //    @OneToMany(mappedBy = "team") // 일대다 양방향 연결 : 읽기 전용. 업데이트는 Member 에서 해야 한다.
 //    private List<Member> members = new ArrayList<>();
     @OneToMany
-    @JoinColumn(name = "TEAM_ID") // 일대다 단방향 연결
+    @JoinColumn(name = "TEAM_ID") // 일대다 단방향 연결 : TEAM 엔티티에서 MEMBER 테이블에 있는 FK 관리 (비추)
     private List<Member> members = new ArrayList<>();
 
     public Long getId() {
