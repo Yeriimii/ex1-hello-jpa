@@ -23,6 +23,13 @@ public class Member {
 //    @JoinColumn(name = "TEAM_ID")
 //    private Team team;
 
+    /**
+     * 일대다 (TEAM에서 MEMBER 테이블 FK 관리) 일 때 양방향 연관관계 (억지)
+     */
+    @ManyToOne
+    @JoinColumn(name = "TEAM_ID", insertable = false, updatable = false) // 강제로 읽기 전용으로 만들기
+    private Team team;
+
     @OneToOne
     @JoinColumn(name = "LOCKER_ID")
     private Locker locker;
