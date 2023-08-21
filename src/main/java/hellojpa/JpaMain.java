@@ -16,19 +16,11 @@ public class JpaMain {
 
         try {
 
-            Address address = new Address("city", "street", "10000");
+            Address address1 = new Address("city", "street", "10000");
+            Address address2 = new Address("city", "street", "10000");
 
-            Member member1 = new Member();
-            member1.setUsername("hello");
-            member1.setHomeAddress(address);
-            em.persist(member1);
-
-            Address copyAddress = new Address("newCity", address.getStreet(), address.getZipcode()); // 새로 만들면됨
-
-            Member member2 = new Member();
-            member2.setUsername("hello");
-            member2.setHomeAddress(copyAddress); // 임베디드 값 타입을 복사해서 사용해야 한다.
-            em.persist(member2);
+            System.out.println("address1 == address2 " + (address1 == address2));
+            System.out.println("address1 equals address2 " + (address1.equals(address2)));
 
             tx.commit();
         } catch (Exception e) {
