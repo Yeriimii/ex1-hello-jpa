@@ -10,6 +10,6 @@ public class Locker {
 
     private String name;
 
-    @OneToOne(mappedBy = "locker")
+    @OneToOne(mappedBy = "locker") // 일대일 양방향 관계
     private Member member;
 }

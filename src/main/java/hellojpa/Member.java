@@ -31,7 +31,7 @@ public class Member {
     private Team team;
 
     @OneToOne
-    @JoinColumn(name = "LOCKER_ID")
+    @JoinColumn(name = "LOCKER_ID") // 일대일 연관관계 주인
     private Locker locker;
 
     @OneToMany(mappedBy = "member")
