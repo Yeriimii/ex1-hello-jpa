@@ -37,15 +37,9 @@ public class JpaMain {
             System.out.println("======== START =======");
             Member findMember = em.find(Member.class, member.getId());
 
-            List<Address> addressesHistory = findMember.getAddressesHistory(); // 지연 로딩
-            for (Address address : addressesHistory) {
-                System.out.println("address = " + address.getCity());
-            }
-
-            Set<String> favoriteFoods = findMember.getFavoriteFoods(); // 지연 로딩
-            for (String favoriteFood : favoriteFoods) {
-                System.out.println("favoriteFood = " + favoriteFood);
-            }
+            //homeCity -> newCity
+            Address a = findMember.getHomeAddress();
+            findMember.setHomeAddress(new Address("newCity", a.getStreet(), a.getZipcode()));
 
             tx.commit();
         } catch (Exception e) {
